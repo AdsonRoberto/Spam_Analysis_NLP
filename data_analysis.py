@@ -27,3 +27,10 @@ nlp = spacy.load('en_core_web_sm')
 
 spam = pd.read_csv("td_atv_no.csv")
 spam.head()
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+for message in spam["Message"]:
+  print(message)
+  break
