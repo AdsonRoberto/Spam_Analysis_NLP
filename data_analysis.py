@@ -44,3 +44,7 @@ for linha in spam['Message']:
 spam['tokenizacao'] = tokenizada
 
 spam.head()
+
+spam["tokenizacao"][0]
+
+spam["Message"][0]
