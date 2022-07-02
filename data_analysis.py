@@ -34,3 +34,13 @@ drive.mount('/content/drive')
 for message in spam["Message"]:
   print(message)
   break
+
+
+tokenizada = []
+
+for linha in spam['Message']:
+  tokenizada.append(sent_tokenize(linha, language="english"))
+
+spam['tokenizacao'] = tokenizada
+
+spam.head()
