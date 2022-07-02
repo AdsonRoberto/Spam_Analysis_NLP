@@ -20,3 +20,10 @@ nltk.download("wordnet")
 nltk.download("averaged_perceptron_tagger")
 nltk.download("maxent_ne_chunker")
 nltk.download("words")
+
+!python -m spacy download 'en_core_web_sm'
+
+nlp = spacy.load('en_core_web_sm')
+
+spam = pd.read_csv("td_atv_no.csv")
+spam.head()
