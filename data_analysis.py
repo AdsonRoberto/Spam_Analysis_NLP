@@ -36,6 +36,7 @@ for message in spam["Message"]:
   break
 
 
+
 tokenizada = []
 
 for linha in spam['Message']:
