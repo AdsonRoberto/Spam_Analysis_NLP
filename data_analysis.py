@@ -35,17 +35,34 @@ for message in spam["Message"]:
   print(message)
   break
 
+coluna_minusculo = []
+coluna_tokenizada = []
+coluna_sem_stop_word = []
+coluna_sem_tag = []
 
-
-tokenizada = []
+stop_word = stopwords.words("english")
 
 for linha in spam['Message']:
-  tokenizada.append(sent_tokenize(linha, language="english"))
+  #Texto minisculo
+  texto_minusculo = linha.lower()
+  coluna_minusculo.append(texto_minusculo)
 
-spam['tokenizacao'] = tokenizada
+  #Removendo tags html
+  texto_sem_tag = re.sub(r'<.*?>', ' ', texto_minusculo)
+  coluna_sem_tag.append(texto_sem_tag)
 
-spam.head()
+  #Tokenizando texto em palavras
+  texto_tokenizado = word_tokenize(texto_sem_tag, language="english")
+  coluna_tokenizada.append(texto_tokenizado)
 
-spam["tokenizacao"][0]
+  #Sem stopword
+  texto_sem_sw = [w for w in texto_tokenizado if not w in stop_word]
+  coluna_sem_stop_word.append(texto_sem_sw)
 
-spam["Message"][0]
+spam['minusculo'] = coluna_minusculo
+spam['sem_tag'] = coluna_sem_tag
+spam['tokenizacao'] = coluna_tokenizada
+spam['sem_stop_word'] = coluna_sem_stop_word
+
+type(spam["Message"][0][0])
+
